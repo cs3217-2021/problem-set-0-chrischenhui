@@ -1,8 +1,8 @@
 # CS3217 Problem Set 0
 
-Name: Your name
+Name: Chen Hui
 
-Matric No: Your matric no
+Matric No: A0187372W
 
 ## Instructions for Students
 

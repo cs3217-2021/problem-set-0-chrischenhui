@@ -7,15 +7,24 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ContentView: View {
+    @EnvironmentObject var modelData: ModelData
+
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text(modelData.sudokuSolver.gridify())
+        }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+                .environmentObject(ModelData())
+        }
     }
 }

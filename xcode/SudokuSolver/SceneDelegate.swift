@@ -9,7 +9,9 @@
 import UIKit
 import SwiftUI
 
+@available(iOS 14.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    @StateObject private var modelData = ModelData()
 
     var window: UIWindow?
 
@@ -23,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+        let contentView = ContentView().environmentObject(modelData)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
