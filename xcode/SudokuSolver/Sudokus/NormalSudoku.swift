@@ -173,4 +173,18 @@ class NormalSudoku: Sudoku {
         }
         return grid
     }
+
+    func retrieveCells() -> [(Cell, Int)] {
+        Array(assignedVariables)
+    }
+
+    private func printNeighbours() {
+        for (cell, neighbours) in self.neighbours {
+            print("Cell row and col: ", cell.row, cell.col)
+            for neighbour in neighbours {
+                print(neighbour.row, neighbour.col, terminator: ", ")
+            }
+            print()
+        }
+    }
 }

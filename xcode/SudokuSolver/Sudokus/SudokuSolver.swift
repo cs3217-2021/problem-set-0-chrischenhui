@@ -9,9 +9,9 @@
 import Foundation
 
 class SudokuSolver {
-    var sudoku: NormalSudoku
+    var sudoku: Sudoku
 
-    init(sudoku: NormalSudoku) {
+    init(sudoku: Sudoku) {
         self.sudoku = sudoku
     }
 
@@ -19,7 +19,11 @@ class SudokuSolver {
         print("Solved? : ", backtrack(sudoku: sudoku))
     }
 
-    func backtrack(sudoku: NormalSudoku) -> Bool {
+    func gridify() -> String {
+        sudoku.gridify()
+    }
+
+    func backtrack(sudoku: Sudoku) -> Bool {
         if sudoku.isSolved {
             return true
         } else {
@@ -27,7 +31,7 @@ class SudokuSolver {
             let orderedDomain = sudoku.least_constraining_values(cell: cell, domain: domain)
             for (value, _) in orderedDomain {
                 if sudoku.is_consistent_with_value(cell: cell, value: value) {
-                    let removedDomain = sudoku.set(cell: cell, to: value)
+                    let removedDomain = self.sudoku.set(cell: cell, to: value)
                     let (inferSuccess, domainUpdates) = sudoku.inference(cell: cell, value: value)
                     if inferSuccess {
                         if backtrack(sudoku: sudoku) {
